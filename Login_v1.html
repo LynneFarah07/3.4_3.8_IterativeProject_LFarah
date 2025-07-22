@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $myusername = mysqli_real_escape_string($conn, $_POST['username']);
     $mypassword = mysqli_real_escape_string($conn, $_POST['password']);
 
-    $query = "SELECT * FROM users WHERE User_ID='$myusername' AND Password='$mypassword'";
+    $query = "SELECT * FROM users__2_ WHERE User_ID='$myusername' AND Password='$mypassword'";
 	$result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $count = mysqli_num_rows($result);
@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['login_user'] = $myusername;
 
         if ($myusername == "Graeme") {
-            header("location: 04_add_user_v1.php");
+            header("location: 04_add_user_v2.php");
         } else {
-            header("location: MusicDetails01_v1.php");
+            header("location: MusicDetails01_v2.php");
         }
     } else {
         $error = "Incorrect Username or Password";
@@ -34,28 +34,29 @@ ob_end_flush();
 	<head>
 		<meta charset = "utf-8" />
 		<title>01_Login</title>
-		<link rel="stylesheet" type="text/css" href="css/divs.css">
-		<link rel="stylesheet" type="text/css" href="css/fonts.css">
-		<link rel="stylesheet" type="text/css" href="css/nav.css">
+		<link rel="stylesheet" type="text/css" href="css/divs_v2.css">
+		<link rel="stylesheet" type="text/css" href="css/fonts_v2.css">
+		<link rel="stylesheet" type="text/css" href="css/nav_v2.css">
 	</head>
 	<body>
 		<main>
+			<div class="nav"><!-- Holds the page navigation -->
+					<?php
+						//Pulls the links from the nav.php page and places them in the navigation div
+						require '07_nav_v2.php'; //'require' is 100% needed for the site to run 
+					?><div class="break-line"></div>
 			<div class="wrapper"><!-- the div that holds the grid -->
 				<div class="header"><!-- Holds the heading image -->
-					<img src = "images/Graeme'sBanner_01.jpg" alt = "An image as a place holder" class = "image01" />
+					<img src = "images/GraemesMusicBanner.jpg" alt = "An image as a place holder" class = "image01" />
 				</div>
 				<div class="title"><!-- Holds the page title -->
 
 				</div>
-				<div class="nav"><!-- Holds the page navigation -->
-					<?php
-						//Pulls the links from the nav.php page and places them in the navigation div
-						require '07_nav_v1.php'; //'require' is 100% needed for the site to run 
-					?>
+				
 				</div>
 				<div class="content"><!-- Holds the main page content -->
 					<div class="section3"><!--Holds the main page content-->
-						<h3><form method = "post" id = "01_login_v1.php">
+						<h3><form method = "post" id = "01_login_v2.php">
 							
 						<label for='post' id="login">Username:</label>
 						<input for='text' name="username" placeholder="Enter username"/><br/>
