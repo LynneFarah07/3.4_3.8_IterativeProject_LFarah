@@ -1,46 +1,92 @@
-/****************** NAVIGATION SYSTEM FOR ADMIN USER*********************/
+/* nav.css */
+
+/* Main navigation styling */
 .nav {
-	background-color: #000;
-	border: 1px solid #fff;
-	text-align: center;
-	margin: 0;
-	padding: 0;
+  background-color: #000; /* Set background color to black */
+  font-family: Arial, sans-serif; /* Set font family to Arial or sans-serif as fallback */
 }
 
-.nav ul{
-	list-style: none;
-	margin-top: 10px;
-	font-family: Calibri;
-	font-size: 1.1em;
-	font-weight: 666;
-	float: center;
+/* Unordered list inside the nav container */
+.nav ul {
+  list-style: none; /* Remove default bullet points from list */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox to layout the items */
+  justify-content: center; /* Center the list items horizontally */
+  align-items: center; /* Center the list items vertically */
+  height: 50px; /* Set height of the navigation bar */
 }
 
+/* Styling for each list item in the navigation */
 .nav ul li {
-	display: inline-block;
-	width: 5.5em;
-	margin: 0px 5px 0px 5px;
-	border-top: 1px solid #ccc;
-	border-right: 3px solid #999;
-	border-bottom: 3px solid #999;
-	border-left: 1px solid #ccc;
-	border-radius: 10px;
-	background-color: #444;
+  position: relative; /* Necessary for positioning dropdown menu */
 }
 
+/* Link styling inside each list item */
 .nav ul li a {
-	color:#f6b619;
-	text-decoration: none;
+  display: block; /* Make the link a block element (it takes up full width) */
+  padding: 15px 20px; /* Add padding around the text */
+  color: white; /* Set text color to white */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: bold; /* Make the text bold */
 }
 
-.nav ul li a:active{
-	color:#f6b619;
+/* Hover effect for list items */
+.nav ul li:hover {
+  background-color: #6B6B6B; /* Change background color when hovering over a list item */
 }
 
-.nav ul li a:hover{
-	color:#fce;
+/* Hover effect for links */
+.nav ul li a:hover {
+  color: #000; /* Change link text color to black when hovered */
 }
 
-.nav ul li a:visited{
-	color:#f6b619;
-} 
+/* Dropdown menu styling */
+.nav ul li ul {
+  display: none; /* Hide the dropdown menu by default */
+  position: absolute; /* Position it absolutely relative to the list item */
+  top: 100%; /* Position the dropdown right below the parent list item */
+  left: 0; /* Align the dropdown to the left */
+  background-color: #6B6B6B; /* Set background color of the dropdown */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+  min-width: 178px; /* Set a minimum width for the dropdown */
+  z-index: 999; /* Ensure dropdown appears above other content */
+  height: 200px;
+}
+
+/* Targeting the Music Filters dropdown */
+.nav ul li.music filters ul {
+  min-width: 150px; /* Adjust width to suit your preference */
+  height: 150px;
+}
+
+/* Show the dropdown when hovering over the parent list item */
+.nav ul li:hover ul {
+  display: block; /* Make the dropdown visible */
+}
+
+/* Styling for each list item inside the dropdown */
+.nav ul li ul li {
+  width: 100%; /* Make the dropdown items take up the full width */
+}
+
+/* Styling for links inside the dropdown */
+.nav ul li ul li a {
+  padding: 12px 16px; /* Add padding around dropdown link text */
+  font-size: 14px; /* Set font size of dropdown links */
+  white-space: nowrap; /* Prevent text from wrapping to multiple lines */
+}
+
+/* Hover effect for dropdown items */
+.nav ul li ul li:hover {
+  background-color: #595959; /* Change background color when hovering over a dropdown item */
+}
+
+/* Optional: visited/active states for links */
+a:visited {
+  color: #fff; /* Set visited link color to white */
+}
+a:active {
+  color: #fff; /* Set active link color to white */
+}
