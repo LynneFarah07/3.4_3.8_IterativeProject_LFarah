@@ -1,4 +1,6 @@
-/* nav.css */
+/* -----------------------------
+   Navigation CSS
+----------------------------- */
 
 /* Main navigation styling */
 .nav {
@@ -6,39 +8,51 @@
   font-family: Arial, sans-serif;
 }
 
-/* Container to separate left and right navs */
+/* Container */
 .nav-container {
   display: flex;
-  justify-content: space-between; /* keeps left and right aligned */
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   height: 60px;
+  position: relative;
 }
 
-/* Unordered list inside the nav container */
-.nav ul {
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  padding: 8px 10px;
+  user-select: none;
+  z-index: 1100;
+  margin-left: 0;
+  order: 1;
+}
+
+/* Hidden checkbox toggle for hamburger */
+.menu-toggle {
+  display: none;
+}
+
+/* Unified nav menu */
+.nav-menu {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-/* LEFT side navigation */
-.nav-left {
-  display: flex;
+  flex: 1;
   align-items: center;
 }
 
-/* RIGHT side navigation */
-.nav-right {
-  display: flex;
-  align-items: center;
+/* Spacer pushes right-side items away from left-side */
+.nav-menu .spacer {
+  flex: 1;
 }
 
-/* Styling for each list item */
-.nav ul li {
+/* Each item */
+.nav-menu li {
   position: relative;
 }
 
@@ -47,10 +61,11 @@
   height: 40px;
   width: auto;
   margin-right: 10px;
+  display: block;
 }
 
-/* Link styling */
-.nav ul li a {
+/* Links */
+.nav-menu li a {
   display: block;
   padding: 15px 20px;
   color: white;
@@ -59,15 +74,17 @@
 }
 
 /* Hover */
-.nav ul li:hover {
+.nav-menu li:hover {
   background-color: #6B6B6B;
 }
-.nav ul li a:hover {
+.nav-menu li a:hover {
   color: #000;
 }
 
-/* Dropdown base styling */
-.nav ul li ul {
+/* -----------------------------
+   Dropdown base
+----------------------------- */
+.dropdown-list {
   display: none;
   position: absolute;
   top: 100%;
@@ -79,25 +96,34 @@
   z-index: 999;
 }
 
-/* Show dropdown on hover */
-.nav ul li:hover ul {
-  display: block;
-}
-
-/* Dropdown items */
-.nav ul li ul li {
+.dropdown-list li {
   width: 100%;
 }
-.nav ul li ul li a {
+.dropdown-list li a {
   padding: 12px 16px;
   font-size: 14px;
   white-space: nowrap;
 }
-.nav ul li ul li:hover {
+.dropdown-list li:hover {
   background-color: #595959;
 }
 
-/* Optional: visited/active */
+/* Desktop: show dropdown on hover */
+@media screen and (min-width: 769px) {
+  .nav-menu li.dropdown:hover > .dropdown-list {
+    display: block;
+  }
+
+  /* also allow checkbox to show it (in case someone clicks the label) */
+  .nav-menu li.dropdown .dropdown-toggle:checked + .dropdown-btn + .dropdown-list {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+/* Visited/active */
 a:visited {
   color: #fff;
 }
@@ -105,39 +131,107 @@ a:active {
   color: #fff;
 }
 
-/* Fix for Music Filters typo */
+/* -----------------------------
+   Dropdown toggle (hidden checkbox) and label styling
+----------------------------- */
+/* hide the checkbox inputs */
+.dropdown-toggle {
+  display: none;
+}
+
+/* style the label (acts like the parent button/link) */
+.dropdown-btn {
+  display: block;
+  padding: 15px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  text-align: center;
+  background: none;
+  border: none;
+}
+
+/* hover style for desktop */
+.dropdown-btn:hover {
+  background-color: #6B6B6B;
+  color: #000;
+}
+
+/* responsive adjustments for specific dropdown widths */
 .music-filters ul {
-  min-width: 120px;
+  min-width: 178px;
   height: auto;
 }
-
-/* ----------------------------- */
-/* Custom dropdown widths */
-/* ----------------------------- */
-
-/* Make Music Filters hover width bigger */
 .music-filters {
-  min-width: 178px; /* increase to match your screenshot */
+  min-width: 178px;
 }
-
-/* Optional: center the text inside */
-.music-filters > a {
-  display: block;
-  text-align: center;
+.user-menu  ul {
+  min-width: 203px;
 }
-
-/* Make User Adjustments dropdown wider */
 .dropdown-user {
-  width: 203px !important;  /* sets exact width */
+  width: 210px !important;
   min-height: 200px;
 }
 
-/* Make User Adjustments hover width bigger */
-.nav-right > li:first-child {  /* selects User Adjustments */
-  min-width: 200px; /* adjust this width as needed */
-}
+/* -----------------------------
+   Responsive / Mobile Hamburger & dropdown toggle behavior
+----------------------------- */
+@media screen and (max-width: 768px) {
+  .nav-container {
+    justify-content: flex-start;
+  }
 
-.nav-right > li:first-child > a {
-  display: block;
-  text-align: center; /* keeps the text centered inside the wider hover */
+  .hamburger {
+    display: block;
+  }
+
+  /* menu collapses into a column beneath the nav bar */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #000;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+
+  /* when hamburger checked, show nav */
+  .menu-toggle:checked ~ .nav-menu {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    border-bottom: 1px solid #333;
+    text-align: center;
+  }
+
+  .nav-menu li a {
+    padding: 12px 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* mobile: dropdowns are inline (static positioning) */
+  .nav-menu li.dropdown .dropdown-list {
+    position: static;
+    display: none;
+    background-color: #111;
+  }
+
+  /* show dropdown when the checkbox is checked (mobile-friendly) */
+  .nav-menu li.dropdown .dropdown-toggle:checked + .dropdown-btn + .dropdown-list {
+    display: block;
+  }
+
+  .logo {
+    margin: 8px auto;
+    height: 48px;
+    display: block;
+  }
 }
