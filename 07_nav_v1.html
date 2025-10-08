@@ -1,11 +1,33 @@
-<!-- NAVIGATION SYSTEM FOR ADMIN USER -->
-<nav>
-	<ul>		
-		<li><a href="01_login_v1.php">Login</a></li>
-		<li><a href="02_show_user_v1.php">Show User</a></li>
-		<li><a href="03_hello_user_v1.php">Hello User</a></li>
-		<li><a href="04_add_user_v1.php">Add User</a></li>
-		<li><a href="05_update_user_v1.php">Update User</a></li>
-		<li><a href="06_delete_user_v1.php">Delete user</a></li>
-	</ul>
+<nav class="nav">
+  <div class="nav-container">
+    <!-- LEFT SIDE -->
+    <ul class="nav-left">
+      <li><a href="index_v2.php">Home</a></li>
+      <li class="music-filters">
+        <a href="#">Music Filters</a>
+        <ul class="dropdown">
+          <li><a href="MusicDetails01_v2.php">Sort by Genre (A-Z)</a></li>
+          <li><a href="MusicDetails02_v2.php">Sort by Artist (A-Z)</a></li>
+          <li><a href="MusicDetails03_v2.php">Sort by Title (Z-A)</a></li>
+          <li><a href="MusicDetails04_v2.php">Sort by Artist (Z-A)</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- RIGHT SIDE -->
+    <ul class="nav-right">
+      <li>
+        <a href="#">User Adjustments</a>
+        <ul class="dropdown">
+          <li><a href="02_show_user_v2.php">Show User</a></li>
+          <li><a href="03_hello_user_v2.php">Hello User</a></li>
+          <li><a href="04_add_user_v2.php">Add User</a></li>
+          <li><a href="05_update_user_v2.php">Update User</a></li>
+          <li><a href="06_delete_user_v2.php">Delete User</a></li>
+        </ul>
+      </li>
+      <li><a href="Contact_v2.php">Contact</a></li>
+      <li><a href="01_login_v2.php">Login</a></li>
+    </ul>
+  </div>
 </nav>
