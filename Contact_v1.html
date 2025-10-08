@@ -1,43 +1,42 @@
 <?php
-session_start();
-if ($_SESSION['login_user'] !== "Graeme") {
-				header("location:MusicDetails01_v1.php");
-			}
-if (!isset($_SESSION['login_user'])) {
-    header("location:01_login_v1.php");
-    exit();
-} else {
-    $User = $_SESSION['login_user'];
-}
-
-// connect to php
-require "L3_Database_Assessment_LFarah_mysqli.php";
+	 session_start();
+	 if(!isset($_SESSION['login_user'])){
+		 header("location:01_login_v2.php");
+	 }
+	else{
+		$User = $_SESSION['login_user'];
+	}
 ?>
 
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
+		<title>Graeme's Music</title>
+		<meta charset="utf-8">
+		<meta name="Keywords" content="html5, layout, CSS Grid System">
+		<meta name="Author" content="Lynne Farah">
+		<meta name="Description" content="Graeme's music">
+		<meta name="Viewport" content="width=device-width, inintial-scale=1">
 		<meta charset = "utf-8" />
-		<title>04_Add_User</title>
-		<link rel="stylesheet" type="text/css" href="css/grids.css">
-		<link rel="stylesheet" type="text/css" href="css/fonts_v1.css">
-		<link rel="stylesheet" type="text/css" href="css/nav_non admin.css">
+		
+		<link rel="stylesheet" type="text/css" href="css/fonts_v2.css">
+		<link rel="stylesheet" type="text/css" href="css/grids_v2.css">
+		<link rel="stylesheet" type="text/css" href="css/nav_non admin_v2.css">
 	</head>
 	<body>
 		<main>
-			<div class="wrapper"><!-- the div that holds the grid -->
-				<div class="header"><!-- Holds the heading image -->
-					<img src = "images/Graeme'sBanner_01.jpg" alt = "An image as a place holder" class = "image01" />
-				</div>
-				<div class="title"><!-- Holds the page title -->
-				<br><br><h1 class = "grey"><center>Contact us </center></h1><br><br>
-				</div>
-				
-				<div class="nav"><!-- Holds the page navigation -->
+			<div class="nav"><!-- Holds the page navigation -->
 					<?php
 						//Pulls the links from the nav.php page and places them in the navigation div
-						require '07_nav_v1.php'; //'require' is 100% needed for the site to run 
-					?>
+						require '08_nav_v2.php'; //'require' is 100% needed for the site to run 
+					?><div class="break-line"></div>
+			<div class="wrapper"><!-- the div that holds the grid -->
+				<div class="header"><!-- Holds the heading image -->
+					<img src = "images/GraemesBanner_02.jpg" alt = "An image as a place holder" class = "image01" />
+				</div>
+				<div class="title"><!-- Holds the page title -->
+				<br><br><h1 class = "grey"><center>Contact US</center></h1><br><br>
+				</div>
 				
 				</div>
 				<div class="contact-container">
@@ -84,7 +83,7 @@ require "L3_Database_Assessment_LFarah_mysqli.php";
             </form>
 				</div>
 				<div class="footer"><!-- Holds the foot notes -->
-					<p class = "grey">&copy; Copyright Lynne Farah 2025</p>
+					<p class = "grey">&copy; Copyright Lynne Farah 2025</p><hr>
 				</div>
 			</div>
 		</main>	
